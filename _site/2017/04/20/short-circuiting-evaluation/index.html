@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="This is apa915436's personal blog.">
 
-    <title>Chef Introduction - Tobey's chit chat</title>
+    <title>Short-Circuiting Evaluation - Tobey's chit chat</title>
 
-    <link rel="canonical" href="http://localhost:4000/2017/01/19/chef-introduction/">
+    <link rel="canonical" href="http://localhost:4000/2017/04/20/short-circuiting-evaluation/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -76,16 +76,14 @@
 
 
     <!-- Post Header -->
-<header class="intro-header" style="background-image: url('/img/post-chef-bg.png')">
+<header class="intro-header" style="background-image: url('/img/post-short-circuiting-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Chef Introduction</h1>
+                    <h1>Short-Circuiting Evaluation</h1>
                     
-                    <h2 class="subheading">DevOps tool</h2>
-                    
-                    <span class="meta">Posted by Tobey on January 19, 2017</span>
+                    <span class="meta">Posted by Tobey on April 20, 2017</span>
                 </div>
             </div>
         </div>
@@ -98,9 +96,28 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>The topic of our 3rd week DevOps study group is Chef, a tool which automates and manages infrasture as code. The material is as below, as for the hands-on workshop, make sure to install vagrant and download chef server and client in advance to save time.'</p>
+				<p>I've been resolving issues from sonarqube analysis for objective-c. Whenever code existed like this, a critical issue, collapsible if statements, is then reported.</p>
+<pre><code class="language-objective-c">if(someEvaluation){
+    if(otherEvaluation){
+        //blablabla
+    }
+}
+</code></pre>
+<p>It suggests the issue to be fixed like this</p>
 
-<iframe src="//slides.com/apa915436/chef/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+<pre><code class="language-objective-c">if(someEvaluation &amp;&amp; otherEvaluation){
+    //blablabla
+}
+</code></pre>
+<p>But what if I have the first evaluation checking for object to be not nil and then get the value in the object? Will the program crash if it’s done in the same line of code?</p>
+
+<pre><code class="language-objective-c">if(dictionary != nil &amp;&amp; [dictionary objectForKey:@"key"]){
+    //blablabla
+}
+</code></pre>
+<p>The answer is no. Due to the application of short-circuiting evaluation in C language, the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression, which means the first condition will ensure that the dictionary is not nil before executing the second arugument.</p>
+
+<p>Reference Link: <a href="http://stackoverflow.com/questions/14341008/if-statement-with-operator-checks-for-2nd-value">stack overflow link</a>, <a href="https://en.wikipedia.org/wiki/Short-circuit_evaluation">Wikipedia: Short-Circuiting Evaluation</a></p>
 
 
                 <hr>
@@ -108,13 +125,9 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/12/17/codepath-android-bootcamp/" data-toggle="tooltip" data-placement="top" title="CodePath x Girls in Tech Android Bootcamp">&larr; Previous Post</a>
+                        <a href="/2017/01/19/chef-introduction/" data-toggle="tooltip" data-placement="top" title="Chef Introduction">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2017/04/20/short-circuiting-evaluation/" data-toggle="tooltip" data-placement="top" title="Short-Circuiting Evaluation">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
